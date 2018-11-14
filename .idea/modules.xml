@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/automapi.iml" filepath="$PROJECT_DIR$/automapi.iml" />
+      <module fileurl="file://$PROJECT_DIR$/dataservice/dataservice.iml" filepath="$PROJECT_DIR$/dataservice/dataservice.iml" />
+      <module fileurl="file://$PROJECT_DIR$/excute/excute.iml" filepath="$PROJECT_DIR$/excute/excute.iml" />
+    </modules>
+  </component>
+</project>

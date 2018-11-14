@@ -7,17 +7,15 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Properties;
+import java.util.*;
 
 
 public class JdbcUtils {
 
 	 private static  Connection conn = null;
 	   
-	    PreparedStatement ps = null;
-	    ResultSet rs = null;
+	  private static   PreparedStatement ps = null;
+	 private  static    ResultSet rs = null;
 	
 	    
 	    public static void main(String[] args) {
@@ -51,7 +49,6 @@ public class JdbcUtils {
 	}
 	    
 
-  //������
     public static Connection getConn(String server,String dbname,String dbuser,String dbpwd){      
         String DRIVER = "com.mysql.cj.jdbc.Driver";
         String URL = "jdbc:mysql://"+server+":3306/"+dbname+"?user="+dbuser+"&password="+dbpwd+"&useUnicode=true&characterEncoding=utf8&serverTimezone=GMT%2B8&useSSL=false";
@@ -63,7 +60,7 @@ public class JdbcUtils {
         }
         return conn;
     }
-    //ִ��sql��䣬���ӣ��޸ģ�ɾ��
+
     public int executeUpdate(String preparedSql,String[]param){
         int num = 0;
         try{
@@ -79,9 +76,8 @@ public class JdbcUtils {
         }
         return num;
     }
-    
-    //ִ��sql��䣬���Խ��в�ѯ
-    public ResultSet executeQuery(String preparedSql,String[] param){
+
+    public static ResultSet executeQuery(String preparedSql,String[] param){
         try{
         
             ps = conn.prepareStatement(preparedSql);
@@ -100,9 +96,23 @@ public class JdbcUtils {
 
     }
 
-	
-	  //�ر�����
-    public void closeAll(){
+	public static Map getResult(ResultSet rs) throws SQLException {
+        Map params=new HashMap();
+        if(rs!=null)
+        {
+            while (rs.next())
+            {
+                params.put(rs.getObject("user"),rs.getObject("password"));
+            }
+
+
+        }
+        closeAll(rs,null,null);
+        return params;
+    }
+
+
+    public static void closeAll(ResultSet rs,Connection con,PreparedStatement ps){
         try{
             if(rs != null){
                 rs.close();

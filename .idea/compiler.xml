@@ -10,5 +10,10 @@
         <module name="excute" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="automapi" target="1.8" />
+      <module name="dataservice" target="1.8" />
+      <module name="excute" target="1.8" />
+    </bytecodeTargetLevel>
   </component>
 </project>
