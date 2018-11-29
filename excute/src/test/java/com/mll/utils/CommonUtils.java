@@ -20,7 +20,7 @@ public class CommonUtils {
     static{
         Properties properties = new Properties();
         try{
-            properties.load(CommonUtils.class.getResourceAsStream("/jdbc.properties"));
+            properties.load(CommonUtils.class.getResourceAsStream("/httpclient.properties"));
             Set<Map.Entry<Object, Object>> entries =  properties.entrySet();
             Iterator<Map.Entry<Object, Object>> iterator = entries.iterator();
             while(iterator.hasNext()){
@@ -32,7 +32,7 @@ public class CommonUtils {
                 }
             }
         }catch(Exception e){
-            LOG.error("加载liujin.properties启动配置文件报错",e.fillInStackTrace());
+            LOG.error("加载配置文件错误",e.fillInStackTrace());
         }
     }
 

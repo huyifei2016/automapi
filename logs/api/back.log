@@ -1,5 +1,5 @@
-logback 成功了
-logback 成功了
-logback 成功了
-logback 成功了
-logback 成功了
+加载liujin.properties启动配置文件报错
+java.lang.NullPointerException: null
+	at com.mll.utils.CommonUtils.<clinit>(CommonUtils.java:35)
+	at com.mll.utils.MyHttpUtil.<clinit>(MyHttpUtil.java:52)
+	at com.zfw.message.TestMessage.main(TestMessage.java:22)

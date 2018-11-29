@@ -38,7 +38,7 @@ public class JdbcUtils {
 	{
 		Properties pro=new Properties();
 		//    InputStream files=JdbcUtils.class.getResourceAsStream("src/main/resource/jdbc.properties");
-		InputStream files=JdbcUtils.class.getResourceAsStream("/jdbc.properties");
+		InputStream files=JdbcUtils.class.getResourceAsStream("/src/test/resources/jdbc.properties");
 		try {
 			pro.load(files);
 		} catch (IOException e) {
