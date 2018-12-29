@@ -78,6 +78,15 @@ public class MyHttpUtil {
 	}
 
 
+	public static HttpResponse httpPostRequestR(String url, String json)
+			throws UnsupportedEncodingException {
+		HttpPost httpPost = new HttpPost(url);
+		StringEntity entity = new StringEntity(json, "utf-8");
+		entity.setContentEncoding("UTF-8");
+		entity.setContentType("application/json");
+		httpPost.setEntity(entity);
+		return getResultR(httpPost);
+	}
 
 
 
@@ -192,6 +201,45 @@ public class MyHttpUtil {
 		return getResult(httpGet);
 	}
 
+	private static HttpResponse getResultR(HttpRequestBase request) {
+
+		URI uri = request.getURI();
+		String strUrl = uri.toString();
+		HttpResponse	response=null;
+		String result="";
+		List<String> li=new ArrayList<String>();
+		try {
+
+			if(strUrl.startsWith("http"))
+			{
+
+				response= getHttpClient().execute(request);
+
+			}
+			else
+			{
+
+				response=getHttpsClient().execute(request);
+
+			}
+
+
+
+
+		} catch (ClientProtocolException e) {
+			e.printStackTrace();
+		} catch (Exception e) {
+
+			e.printStackTrace();
+		} finally {
+
+		}
+		return response;
+	}
+
+
+
+
 	private static String getResult(HttpRequestBase request) {
 
 		URI uri = request.getURI();
@@ -204,7 +252,7 @@ public class MyHttpUtil {
 			if(strUrl.startsWith("http"))
 			{
 
-				response= httpClient.execute(request);
+				response= getHttpClient().execute(request);
 
 			}
 			else

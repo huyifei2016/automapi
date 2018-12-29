@@ -1,11 +1,13 @@
 package example;
 
+import com.mll.domain.User;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
+import java.util.List;
 
 /**
  * @Author: yifei
@@ -21,6 +23,9 @@ public class TestIterator {
         arrays.add(new String[]{"heeee222"});
         return arrays.iterator();
     }
+
+
+
     @Test(dataProvider = "iterator1")
     public void testIterator(String[] name)
     {
